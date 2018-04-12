@@ -2,7 +2,6 @@ package world.tasks
 
 import play.api.libs.json.Json
 import play.api.mvc._
-
 import scala.concurrent.ExecutionContext
 
 class CustomTaskController(taskService: CustomTaskService, cc: ControllerComponents)(
@@ -24,9 +23,8 @@ class CustomTaskController(taskService: CustomTaskService, cc: ControllerCompone
     }
   }
 
-  // TODO: add a body parser
-  def add = Action.async {
-    taskService.add().map {
+  def add = Action.async(util.BodyParser.json[CustomTask]) { implicit request =>
+    taskService.add(request.body).map {
       case Some(task) => Created(task.toJson)
       case None       => BadRequest("Impossible to create TODO")
     }

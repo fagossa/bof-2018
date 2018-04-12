@@ -2,7 +2,7 @@ import java.util.concurrent.Executors
 
 import play.api._
 import play.api.routing.Router
-import world.tasks.{ CustomTaskController, CustomTaskRepository, CustomTaskService }
+import world.tasks.{ CustomTaskController, CustomTaskService, DummyCustomTaskRepository }
 
 import scala.concurrent.ExecutionContext
 
@@ -24,7 +24,7 @@ class MyComponents(context: ApplicationLoader.Context)
   implicit val ec: ExecutionContext =
     ExecutionContext.fromExecutor(Executors.newFixedThreadPool(10))
 
-  lazy val taskRepository = new CustomTaskRepository
+  lazy val taskRepository = new DummyCustomTaskRepository
 
   lazy val taskService = new CustomTaskService(taskRepository)
 

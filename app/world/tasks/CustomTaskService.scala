@@ -1,6 +1,6 @@
 package world.tasks
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 /*
  * We can give an async façade to a non async API
