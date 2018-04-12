@@ -1,7 +1,8 @@
 lazy val root = (project in file("."))
   .enablePlugins(
     PlayScala,
-    BuildInfoPlugin
+    BuildInfoPlugin,
+    JavaAppPackaging
   )
   .settings(
     name := "play-scala-4-devoxx",
