@@ -1,6 +1,6 @@
 package world.tasks
 
-import scala.concurrent.{ ExecutionContext, Future }
+import scala.concurrent.{ExecutionContext, Future}
 
 /*
  * We can give an async façade to a non async API
@@ -17,9 +17,9 @@ class CustomTaskService(taskRepository: CustomTaskRepository)(implicit ec: Execu
   def delete(id: String): Future[Option[CustomTask]] =
     Future { taskRepository.delete(id) }
 
-  def add(): Future[Option[CustomTask]] =
+  def add(task: CustomTask): Future[Option[CustomTask]] =
     Future {
-      taskRepository.add()
+      taskRepository.add(task)
     }
 
   def get(id: String): Future[Option[CustomTask]] =
