@@ -3,10 +3,11 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                    world.tasks.CustomTaskController.list
-GET     /:id                 world.tasks.CustomTaskController.get(id: String)
-PUT     /                    world.tasks.CustomTaskController.add
-DELETE  /:id                 world.tasks.CustomTaskController.delete(id: String)
+GET     /task                    world.tasks.CustomTaskController.list
+GET     /task/stream             world.tasks.CustomTaskController.listStream
+GET     /task/:id                world.tasks.CustomTaskController.get(id: String)
+POST    /task                    world.tasks.CustomTaskController.add
+DELETE  /task/:id                world.tasks.CustomTaskController.delete(id: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)

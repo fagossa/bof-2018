@@ -1,5 +1,8 @@
 package world.tasks
 
+import akka.NotUsed
+import akka.stream.scaladsl.Source
+
 import scala.concurrent.{ ExecutionContext, Future }
 
 /*
@@ -13,6 +16,9 @@ class CustomTaskService(taskRepository: CustomTaskRepository)(implicit ec: Execu
     Future {
       taskRepository.list
     }
+
+  def listStream: Source[CustomTask, NotUsed] =
+    Source.fromIterator(() => taskRepository.list.toIterator)
 
   def delete(id: String): Future[Option[CustomTask]] =
     Future { taskRepository.delete(id) }
