@@ -9,7 +9,7 @@ jdk:
 - oraclejdk9
 env:
   matrix:
-    - SCRIPT=scripts/test-sbt
+    - SCRIPT=playFramework/scripts/test-sbt
 script:
 - $SCRIPT
 cache:
