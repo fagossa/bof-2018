@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/fagossa/bof-2018.svg?branch=master)](https://travis-ci.org/fagossa/bof-2018)
-
 # playFramework example in scala
 
 This project is an example intended to show some basic functionality of playFramework.
@@ -54,4 +52,3 @@ implicit val format: OFormat[CustomTask] = Json.format[CustomTask]
     response.map(status(_)) mustBe Some(CREATED)
 }
 ```
-
