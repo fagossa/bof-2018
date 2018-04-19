@@ -20,7 +20,7 @@ class TaskRoutesSpec extends WordSpec with Matchers with ScalaFutures with Scala
 
       val customTask = CustomTask(UUID.randomUUID().toString, UUID.randomUUID().toString)
       taskRepository.add(customTask)
-      val request = HttpRequest(uri = "/tasks")
+      val request = HttpRequest(uri = "/task")
 
       //when
       request ~> taskRoutes.routes ~> check {

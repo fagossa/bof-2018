@@ -14,7 +14,7 @@ class TaskRoutes(taskService: TaskService)(implicit ec: ExecutionContext) {
 
   lazy val routes = listRoute ~ streamRoute ~ getRoute ~ createRoute ~ deleteRoute
 
-  private lazy val listRoute = path("tasks") {
+  private lazy val listRoute = path("task") {
     get {
       onSuccess(taskService.list) { tasks =>
         complete(tasks)
@@ -22,13 +22,13 @@ class TaskRoutes(taskService: TaskService)(implicit ec: ExecutionContext) {
     }
   }
 
-  private lazy val streamRoute = path("tasks" / "stream") {
+  private lazy val streamRoute = path("task" / "stream") {
     get {
       complete(taskService.listStream)
     }
   }
 
-  private lazy val getRoute = path("tasks" / Segment) { id =>
+  private lazy val getRoute = path("task" / Segment) { id =>
     get {
       onSuccess(taskService.get(id)) {
         case Some(task) => complete(task)
@@ -37,7 +37,7 @@ class TaskRoutes(taskService: TaskService)(implicit ec: ExecutionContext) {
     }
   }
 
-  private lazy val createRoute = path("tasks") {
+  private lazy val createRoute = path("task") {
     post {
       entity(as[CustomTask]) { task =>
         onSuccess(taskService.add(task)) {
@@ -48,7 +48,7 @@ class TaskRoutes(taskService: TaskService)(implicit ec: ExecutionContext) {
     }
   }
 
-  private lazy val deleteRoute = path("tasks" / Segment) { id =>
+  private lazy val deleteRoute = path("task" / Segment) { id =>
     delete {
       onSuccess(taskService.delete(id)) {
         case Some(deletedTask) => complete(deletedTask)
