@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+nnumber=$RANDOM
+
+generate_post_data()
+{
+  cat <<EOF
+{
+  "id": "$nnumber",
+  "value": "Task No. $nnumber"
+}
+EOF
+}
+
+curl -i \
+-H "Accept: application/json" \
+-H "Content-Type:application/json" \
+-X POST --data "$(generate_post_data)" "http://localhost:9000/task"
